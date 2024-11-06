@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class Config {
 
+     // Method to establish a connection to the SQLite database
     public static Connection connectDB() {
         Connection con = null;
         try {
@@ -16,7 +17,8 @@ public class Config {
         }
         return con;
     }
-
+    
+    // Method to display records from the database
     public void viewRecords(String query, String[] columnHeaders, String[] columnFields) {
         try (Connection conn = this.connectDB();
              Statement stmt = conn.createStatement();
@@ -35,6 +37,7 @@ public class Config {
         }
     }
 
+     // Method to add a record to the database
     public void addRecord(String sql, Object... values) {
         try (Connection conn = this.connectDB();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
